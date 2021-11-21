@@ -2,6 +2,8 @@ package L10_Nov19;
 
 public class FunctionDemo {
 
+	static int num = 200;
+
 	public static void main(String[] args) {
 
 		System.out.println("hello");
@@ -25,9 +27,41 @@ public class FunctionDemo {
 
 		System.out.println("bye");
 
+		// Case 4 : Demo Example
+		System.out.println("\n----- Case 4 -----");
+		int one = 10;
+		int two = 20;
+
+		swap(one, two);
+		System.out.println(one + " " + two);
+
+		// Case 5 : global
+		System.out.println("\n----- Case 5 -----");
+		System.out.println(num); // global : 200
+		int num = 100; // local
+		System.out.println(num); // local variable wins
+		System.out.println(FunctionDemo.num); // able to access global variable
+
+		// Case 6
+		System.out.println("\n----- Case 6 -----");
+		num = 100;
+		fun1(FunctionDemo.num + num);
+		System.out.println(num);
+		System.out.println(FunctionDemo.num);
+
 	}
-	
-	
+
+	public static void fun1(int no) {
+		num = no;
+	}
+
+	public static void swap(int a, int b) {
+
+		int temp = a;
+		a = b;
+		b = temp;
+		System.out.println(a + " " + b);
+	}
 
 	public static void fun() {
 
@@ -36,7 +70,7 @@ public class FunctionDemo {
 
 		int x = 10;
 		if (x > 5)
-			return ;
+			return;
 
 		System.out.println("ok bye");
 		System.out.println("gn");
