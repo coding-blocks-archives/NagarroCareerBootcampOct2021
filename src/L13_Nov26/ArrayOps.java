@@ -31,7 +31,7 @@ public class ArrayOps {
 		// barGraph(arr);
 
 		// subarrayPrint(arr);
-		subarraySum(arr);
+		maxSubarraySum2Loops(arr);
 
 	}
 
@@ -237,6 +237,41 @@ public class ArrayOps {
 				System.out.println(sum);
 			}
 		}
+
+	}
+
+	public static void subarraySum2Loops(int[] arr) {
+
+		for (int si = 0; si < arr.length; si = si + 1) {
+
+			int sum = 0;
+
+			for (int ei = si; ei < arr.length; ei = ei + 1) {
+				sum = sum + arr[ei];
+				System.out.println(sum);
+			}
+		}
+
+	}
+
+	public static void maxSubarraySum2Loops(int[] arr) {
+
+		int max = Integer.MIN_VALUE;
+
+		for (int si = 0; si < arr.length; si = si + 1) {
+
+			int sum = 0;
+
+			for (int ei = si; ei < arr.length; ei = ei + 1) {
+				sum = sum + arr[ei];
+
+				if (sum > max)
+					max = sum;
+
+			}
+		}
+
+		System.out.println(max);
 
 	}
 
