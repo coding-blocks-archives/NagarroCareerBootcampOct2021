@@ -112,11 +112,13 @@ public class StringOps {
 
 	public static void appendString() {
 
-		String str = "";
+		// String str = "";
+		StringBuilder sb = new StringBuilder() ;
 		int n = 100000;
 
 		for (int i = 1; i <= n; i = i + 1) {
-			str = str + i;
+			// str = str + i;
+			sb.append(i) ;
 		}
 
 	}
