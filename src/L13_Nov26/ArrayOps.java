@@ -10,8 +10,8 @@ public class ArrayOps {
 
 		// int[] arr = takeInput();
 		// int[] arr = { 10, 20, 30, 40, 50, 60 };
-		int[] arr = { 10, 20, 30, 40 };
-		display(arr);
+		// int[] arr = { 10, 20, 30, 40 };
+		// display(arr);
 //		System.out.println(maximum(arr));
 //		System.out.println(linearSearch(arr, 100));
 //		System.out.println(binarySearch(arr, 700));
@@ -31,7 +31,10 @@ public class ArrayOps {
 		// barGraph(arr);
 
 		// subarrayPrint(arr);
-		maxSubarraySum2Loops(arr);
+		// maxSubarraySum2Loops(arr);
+
+		int[] arr = { 2, 3, -6, 1, 2, 3, -4, 5, -10, 6 };
+		System.out.println(kadane(arr)) ;
 
 	}
 
@@ -272,6 +275,24 @@ public class ArrayOps {
 		}
 
 		System.out.println(max);
+
+	}
+
+	public static int kadane(int[] arr) {
+
+		int sum = 0;
+		int max = Integer.MIN_VALUE;
+
+		for (int i = 0; i < arr.length; i = i + 1) {
+
+			sum = Math.max(sum + arr[i], arr[i]);
+
+			if (sum > max)
+				max = sum;
+
+		}
+
+		return max;
 
 	}
 
