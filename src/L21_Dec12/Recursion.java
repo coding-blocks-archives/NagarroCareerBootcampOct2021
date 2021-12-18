@@ -7,13 +7,14 @@ public class Recursion {
 	public static void main(String[] args) {
 
 		Scanner scn = new Scanner(System.in);
-		int x = scn.nextInt();
-		int n = scn.nextInt();
+		// int x = scn.nextInt();
+		// int n = scn.nextInt();
 
 		// System.out.println("hello");
 		// PDI(3);
 		// System.out.println(factorial(n)) ;
-		System.out.println(power(x, n));
+		// System.out.println(power(x, n));
+		System.out.println(fibonacci(7));
 		// System.out.println("bye");
 
 	}
@@ -50,7 +51,7 @@ public class Recursion {
 		}
 
 		System.out.println("hii " + n);
-		PDI(--n);
+		PDI(n - 1);
 		System.out.println("bye " + n);
 
 	}
@@ -74,5 +75,31 @@ public class Recursion {
 
 	public static int power(int x, int n) {
 
+		if (n == 0)
+			return 1;
+
+		int sp = power(x, n - 1);
+		int bp = sp * x;
+
+		return bp;
+
 	}
+
+	// BP : nth fibonacci no.
+	public static int fibonacci(int n) {
+
+		if (n == 0 || n == 1)
+			return n;
+
+		// SP
+		int fnm1 = fibonacci(n - 1);
+		int fnm2 = fibonacci(n - 2);
+
+		// work
+		int fn = fnm1 + fnm2;
+
+		return fn;
+
+	}
+
 }
