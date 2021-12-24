@@ -4,8 +4,14 @@ public class ArrayRecursion {
 
 	public static void main(String[] args) {
 
-		int[] arr = { 10, 20, 30, 80, 15, 30, 60 };
-		System.out.println(lastOcc(arr, 0, 30));
+		int[] arr = { 10, 20, 30, 80, 15, 30, 60, 30, 40, 30, 30 };
+		// System.out.println(lastOcc(arr, 0, 30));
+		int[] ans = allOcc(arr, 0, 300, 0);
+
+		for (int i = 0; i < ans.length; i++) {
+			System.out.print(ans[i] + " ");
+		}
+		System.out.println();
 
 	}
 
@@ -73,20 +79,38 @@ public class ArrayRecursion {
 		if (idx == arr.length)
 			return -1;
 
-		int sp = lastOcc(arr, idx + 1, item) ;
-				
+		int sp = lastOcc(arr, idx + 1, item);
+
 		if (arr[idx] == item && sp == -1) {
-			return idx ;
+			return idx;
 		}
 
 		return sp;
 
 	}
 
+	public static int[] allOcc(int[] arr, int idx, int item, int count) {
+
+		if (idx == arr.length) {
+
+			int[] br = new int[count];
+			return br;
+		}
+
+		if (arr[idx] == item) {
+
+			int[] rr = allOcc(arr, idx + 1, item, count + 1);
+			rr[count] = idx;
+			return rr;
+
+		} else {
+
+			// since present element is not equal to item => return recursion result as it
+			// is
+			int[] rr = allOcc(arr, idx + 1, item, count);
+			return rr;
+
+		}
+
+	}
 }
-
-
-
-
-
-
