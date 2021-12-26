@@ -1,11 +1,16 @@
 package L25_Dec24;
 
+import java.util.ArrayList;
+
 public class Recursion {
 
 	public static void main(String[] args) {
 
-		subsequencesAscii("ab", "");
-
+		// subsequencesAscii("ab", "");
+		// KPC("1453", "");
+		// KPCIterative("1453");
+		// coinToss(3, "");
+		climbingStairs(0, 5, "");
 	}
 
 	// abc , _
@@ -67,14 +72,84 @@ public class Recursion {
 		else
 			return "";
 	}
-	
+
 	// "145" , _
 	public static void KPC(String ques, String ans) {
-		
-		
-		
-		
-		
+
+		if (ques.length() == 0) {
+			System.out.println(ans);
+			return;
+		}
+
+		char ch = ques.charAt(0); // 1
+		String roq = ques.substring(1); // 45
+
+		String code = getCode(ch); // abc
+
+		for (int i = 0; i < code.length(); i++) { // 0 1 2
+			KPC(roq, ans + code.charAt(i));
+		}
+
 	}
 
+	public static void KPCIterative(String ques) {
+
+		ArrayList<String> list = new ArrayList<>();
+		list.add("");
+
+		for (int i = 0; i < ques.length(); i++) {
+
+			char ch = ques.charAt(i);
+			String code = getCode(ch);
+
+			ArrayList<String> nl = new ArrayList<>();
+
+			for (String val : list) {
+
+				for (int j = 0; j < code.length(); j++) {
+
+					nl.add(val + code.charAt(j));
+				}
+			}
+
+			list = nl;
+
+		}
+
+		System.out.println(list);
+
+	}
+
+	public static void coinToss(int n, String ans) {
+
+		if (n == 0) {
+			System.out.println(ans);
+			return;
+		}
+
+		coinToss(n - 1, ans + "H");
+		coinToss(n - 1, ans + "T");
+	}
+
+	public static void climbingStairs(int curr, int end, String ans) {
+
+		if (curr == end) {
+			System.out.println(ans);
+			return;
+		}
+
+		if (curr + 1 <= end)
+			climbingStairs(curr + 1, end, ans + "1");
+
+		if (curr + 2 <= end)
+			climbingStairs(curr + 2, end, ans + "2");
+
+		if (curr + 3 <= end)
+			climbingStairs(curr + 3, end, ans + "3");
+
+	}
 }
+
+
+
+
