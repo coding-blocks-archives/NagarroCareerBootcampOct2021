@@ -10,7 +10,9 @@ public class Recursion {
 		// KPC("1453", "");
 		// KPCIterative("1453");
 		// coinToss(3, "");
-		climbingStairs(0, 5, "");
+		// climbingStairs2(0, 5, "");
+		// mazePath(0, 0, 2, 3, "");
+		validParenthesis(3, 0, 0, "");
 	}
 
 	// abc , _
@@ -148,8 +150,58 @@ public class Recursion {
 			climbingStairs(curr + 3, end, ans + "3");
 
 	}
+
+	public static void climbingStairs2(int curr, int end, String ans) {
+
+		// +ve base case
+		if (curr == end) {
+			System.out.println(ans);
+			return;
+		}
+
+		// -ve base case
+		if (curr > end) {
+			return;
+		}
+
+		climbingStairs2(curr + 1, end, ans + "1");
+		climbingStairs2(curr + 2, end, ans + "2");
+		climbingStairs2(curr + 3, end, ans + "3");
+
+	}
+
+	public static void mazePath(int cr, int cc, int er, int ec, String ans) {
+
+		// +ve base case
+		if (cr == er && cc == ec) {
+			System.out.println(ans);
+			return;
+		}
+
+		// -ve base case
+		if (cr > er || cc > ec) {
+			return;
+		}
+
+		mazePath(cr, cc + 1, er, ec, ans + "H"); // H
+		mazePath(cr + 1, cc, er, ec, ans + "V"); // V
+
+	}
+
+	public static void validParenthesis(int n, int open, int close, String ans) {
+
+		if (open == n && close == n) {
+			System.out.println(ans);
+			return;
+		}
+
+		if (open > n || close > open) {
+			return;
+		}
+
+		validParenthesis(n, open + 1, close, ans + "(");
+		validParenthesis(n, open, close + 1, ans + ")");
+
+	}
+
 }
-
-
-
-
