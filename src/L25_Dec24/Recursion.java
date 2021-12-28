@@ -12,7 +12,10 @@ public class Recursion {
 		// coinToss(3, "");
 		// climbingStairs2(0, 5, "");
 		// mazePath(0, 0, 2, 3, "");
-		validParenthesis(3, 0, 0, "");
+		// validParenthesis(3, 0, 0, "");
+		// permutation("abcd", "");
+
+		lexicoCounting(0, 1000);
 	}
 
 	// abc , _
@@ -201,6 +204,43 @@ public class Recursion {
 
 		validParenthesis(n, open + 1, close, ans + "(");
 		validParenthesis(n, open, close + 1, ans + ")");
+
+	}
+
+	public static void permutation(String ques, String ans) {
+
+		if (ques.length() == 0) {
+			System.out.println(ans);
+			return;
+		}
+
+		for (int i = 0; i < ques.length(); i++) {
+
+			char ch = ques.charAt(i);
+			String roq = ques.substring(0, i) + ques.substring(i + 1);
+
+			permutation(roq, ans + ch);
+
+		}
+
+	}
+
+	public static void lexicoCounting(int curr, int end) {
+
+		if (curr > end)
+			return;
+
+		System.out.println(curr);
+
+		int i = 0;
+
+		if (curr == 0)
+			i = 1;
+
+		while (i <= 9) {
+			lexicoCounting(curr * 10 + i, end);
+			i++;
+		}
 
 	}
 
