@@ -6,7 +6,8 @@ public class BitManipulation {
 
 		// operators();
 		// ithBitCheck(101, 3);
-		noSetBits(20);
+		noSetBits(200);
+		kernighansAlgo(200);
 	}
 
 	public static void operators() {
@@ -90,4 +91,24 @@ public class BitManipulation {
 
 	}
 
+	public static void kernighansAlgo(int n) {
+		
+		int count = 0 ;
+		
+		while(n != 0) {
+			
+			int rmsbMask = n & (-n) ;
+			n = n - rmsbMask ;
+			count++ ;
+				
+		}
+		
+		System.out.println(count);
+	}
 }
+
+
+
+
+
+
